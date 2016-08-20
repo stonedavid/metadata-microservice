@@ -4,6 +4,7 @@ const express = require("express");
 const multer = require("multer");
 const http = require("http");
 const fs = require("fs");
+
 var upload = multer({
     dest: "client/upload/"
 });
@@ -38,11 +39,11 @@ app.post("/upload", upload.single('file'), function(req, res) {
         "Content-Type": "text/html"
     });
     res.write("<pre><code>Name: " + req.file.originalname + "\n");
-    res.write("Path: " + "<a href='https://metadata-microservice-dxstone.c9users.io/upload/" 
+    res.write("Path: " + "<a href='" + process.env.HOME + "/upload/" 
         + req.file.originalname + "'>/upload/" + req.file.originalname + "'</a>\n");
     res.write("Mimetype: " + req.file.mimetype + "\n");
     res.end("Size: " + req.file.size + "\n" +
-        "<a href='" + "https://metadata-microservice-dxstone.c9users.io" + "'>Upload another file</a></code></pre>");
+        "<a href='" + process.env.HOME + "'>Upload another file</a></code></pre>");
 });
 
 
