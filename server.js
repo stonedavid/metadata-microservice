@@ -39,11 +39,11 @@ app.post("/upload", upload.single('file'), function(req, res) {
         "Content-Type": "text/html"
     });
     res.write("<pre><code>Name: " + req.file.originalname + "\n");
-    res.write("Path: " + "<a href='" + process.env.HOME + "/upload/" 
+    res.write("Path: " + "<a href='" + process.env.HEROKU + "/upload/" 
         + req.file.originalname + "'>/upload/" + req.file.originalname + "'</a>\n");
     res.write("Mimetype: " + req.file.mimetype + "\n");
     res.end("Size: " + req.file.size + "\n" +
-        "<a href='" + process.env.HOME + "'>Upload another file</a></code></pre>");
+        "<a href='" + process.env.HEROKU + "'>Upload another file</a></code></pre>");
 });
 
 
